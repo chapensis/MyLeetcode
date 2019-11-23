@@ -1,0 +1,98 @@
+package leetcode;
+
+import java.util.*;
+
+public class FourNumSum {
+    public static void main(String[] args) {
+        FourNumSum fourNumSum = new FourNumSum();
+        int[] nums = {1, 0, -1, 0, -2, 2};
+        List<List<Integer>> result = fourNumSum.fourSum(nums, 0);
+        for (List list : result) {
+            System.out.println(list);
+        }
+    }
+
+    /**
+     * 利用HashMap
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> resultList = new ArrayList<>();
+        HashMap<Integer, List<List<Integer>>> hashMap = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                Integer key = nums[i] + nums[j];
+                // 我的value总是递增的
+                List<Integer> valueList = getList(i, j);
+                int targetValue = target - key;
+                if (hashMap.containsKey(targetValue)) {
+                    List<List<Integer>> list = hashMap.get(targetValue);
+                    for (List<Integer> subList : list) {
+                        List<Integer> result = mergeList(subList, valueList);
+                        if (result.size() > 0) {
+                            resultList.add(result);
+                        }
+                    }
+                }
+
+                if (hashMap.containsKey(key)) {
+                    List<List<Integer>> list = hashMap.get(key);
+                    list.add(valueList);
+                } else {
+                    List<List<Integer>> list = new ArrayList<>();
+                    list.add(valueList);
+                    hashMap.put(key, list);
+                }
+            }
+        }
+
+        List<List<Integer>> resultNumList = new ArrayList<>();
+        HashSet<String> hashSet = new HashSet<>();
+        for (List<Integer> indexList : resultList) {
+            List<Integer> numList = new ArrayList<>();
+            for (Integer i : indexList) {
+                numList.add(nums[i]);
+            }
+            Collections.sort(numList);
+            if (!hashSet.contains(numList.toString())) {
+                resultNumList.add(numList);
+                hashSet.add(numList.toString());
+            }
+        }
+        return resultNumList;
+    }
+
+    /**
+     * 得到一个包含指定元素的集合
+     *
+     * @param i
+     * @param j
+     * @return
+     */
+    public List<Integer> getList(int i, int j) {
+        List<Integer> list = new ArrayList<>();
+        list.add(i);
+        list.add(j);
+        return list;
+    }
+
+    /**
+     * 合并两个集合，并且要保证索引是递增的
+     *
+     * @param source
+     * @param target
+     * @return
+     */
+    public List<Integer> mergeList(List<Integer> source, List<Integer> target) {
+        List<Integer> list = new ArrayList<>();
+        if (source.get(1) >= target.get(0)) {
+            return list;
+        }
+        list.addAll(source);
+        list.addAll(target);
+        return list;
+    }
+}
