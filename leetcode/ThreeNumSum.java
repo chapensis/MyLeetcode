@@ -7,7 +7,7 @@ import java.util.*;
  * <p>
  * 注意：答案中不可以包含重复的三元组。
  * <p>
- * 来源：力扣（LeetCode）
+ * 来源：力扣（LeetCode）15
  * 链接：https://leetcode-cn.com/problems/3sum
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  *
@@ -73,7 +73,8 @@ public class ThreeNumSum {
             int leftIndex = i + 1;
             int rightIndex = nums.length - 1;
             while (leftIndex < rightIndex) {
-                if (nums[leftIndex] + nums[rightIndex] + nums[i] == 0) {
+                int sum = nums[leftIndex] + nums[rightIndex] + nums[i];
+                if (sum == 0) {
                     result.add(Arrays.asList(nums[i], nums[leftIndex], nums[rightIndex]));
 
                     // 只需要在左边找一个不重复的即可
@@ -81,7 +82,7 @@ public class ThreeNumSum {
                         leftIndex++;
                     }
                     leftIndex++;
-                } else if (nums[leftIndex] + nums[rightIndex] + nums[i] < 0) {
+                } else if (sum < 0) {
                     leftIndex++;
                 } else {
                     rightIndex--;
