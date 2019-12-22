@@ -10,8 +10,14 @@ package leetcode;
  * https://leetcode-cn.com/problems/jump-game/
  *
  * @author yangchang
+ * @since 2019-12-22
  */
 public class JumpGame {
+    /**
+     * 主函数
+     *
+     * @param args 参数
+     */
     public static void main(String[] args) {
         int[] nums = {3, 2, 1, 1, 4};
         JumpGame jumpGame = new JumpGame();

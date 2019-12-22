@@ -14,8 +14,14 @@ import java.util.Queue;
  * https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
  *
  * @author yangchang
+ * @since 2019-12-22
  */
 public class LevelOrderBinaryTree {
+    /**
+     * 主函数
+     *
+     * @param args 参数
+     */
     public static void main(String[] args) {
         LevelOrderBinaryTree levelOrderBinaryTree = new LevelOrderBinaryTree();
         TreeNode root1 = new TreeNode(3);
@@ -36,6 +42,7 @@ public class LevelOrderBinaryTree {
 
     /**
      * 层次遍历，核心就在于利用队列实现入队，出队
+     *
      * @param root
      * @return
      */
