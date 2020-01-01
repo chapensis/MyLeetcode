@@ -12,6 +12,11 @@ package leetcode;
  * @since 2019-12-25
  */
 public class StockSell３ {
+    /**
+     * 主函数
+     *
+     * @param args 参数
+     */
     public static void main(String[] args) {
         StockSell３ stockSell = new StockSell３();
         int[] prices = {3, 2, 6, 5, 0, 3};

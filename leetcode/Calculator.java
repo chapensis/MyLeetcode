@@ -5,6 +5,7 @@ package leetcode;
  * 字符串表达式可以包含左括号 ( ，右括号 )，加号 + ，减号 -，非负整数和空格
  * leetcode 224
  * https://leetcode-cn.com/problems/basic-calculator/
+ *
  * @author yangchang
  * @since 2019-12-22
  */
@@ -19,6 +20,12 @@ public class Calculator {
         System.out.println(calculator.calculate("(5-(1+(5)))"));
     }
 
+    /**
+     * 表达式计算
+     *
+     * @param s 字符串表达式
+     * @return 计算结果
+     */
     public int calculate(String s) {
         if (s == null) {
             return 0;
@@ -52,9 +59,15 @@ public class Calculator {
         return result;
     }
 
+    /**
+     * 计算普通减法
+     *
+     * @param s 字符串
+     * @return 结果
+     */
     public int getSubResult(String s) {
-        if(s.startsWith("-"))
-        {
+        // 可能是减号开头，因此需要添加 0
+        if (s.startsWith("-")) {
             s = "0" + s;
         }
         String[] subArray = s.split("-");
