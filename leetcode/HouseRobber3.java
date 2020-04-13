@@ -1,4 +1,4 @@
-package com.example.helloworld.oj;
+package leetcode;
 
 /**
  * 在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。
